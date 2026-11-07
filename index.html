@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #006633;
+            --secondary-color: #004020;
+            --accent-color: #ffc107;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --bg-light: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tiro Bangla', serif, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .top-bar i {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+
+        /* Header / Banner */
+        .header {
+            background: linear-gradient(135deg, #005c2d 0%, #003318 100%);
+            color: var(--text-light);
+            padding: 25px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        .header-logo-title {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 90px;
+            height: 90px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: var(--primary-color);
+            border: 3px solid var(--accent-color);
+        }
+
+        .institution-details h1 {
+            font-size: 26px;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .institution-details p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .meta-badges {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-bar ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 5%;
+        }
+
+        .nav-bar li a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 12px 18px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .nav-bar li a:hover, .nav-bar li a.active {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+        }
+
+        /* Ticker / Notice Bar */
+        .ticker-container {
+            display: flex;
+            background: #ffffff;
+            border-bottom: 1px solid #ddd;
+            overflow: hidden;
+        }
+
+        .ticker-title {
+            background: #d9534f;
+            color: white;
+            padding: 10px 20px;
+            font-weight: bold;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ticker-content {
+            padding: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+            animation: marquee 25s linear infinite;
+        }
+
+        .ticker-content:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(100%, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 2.8fr 1.2fr;
+            gap: 20px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid #e9ecef;
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 18px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .card-body {
+            padding: 18px;
+        }
+
+        /* Superintendent Box */
+        .superintendent-box {
+            text-align: center;
+        }
+
+        .superintendent-img {
+            width: 150px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 3px solid var(--primary-color);
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .superintendent-name {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 17px;
+        }
+
+        .superintendent-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* Notice Board List */
+        .notice-list {
+            list-style: none;
+        }
+
+        .notice-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .notice-list li:last-child {
+            border-bottom: none;
+        }
+
+        .notice-list i {
+            color: var(--primary-color);
+            margin-top: 4px;
+        }
+
+        .notice-date {
+            font-size: 12px;
+            color: #888;
+            display: block;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            list-style: none;
+        }
+
+        .quick-links li a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #eee;
+            transition: 0.2s;
+        }
+
+        .quick-links li a:hover {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            padding-left: 15px;
+        }
+
+        /* Feature Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .feature-box {
+            background: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .feature-box i {
+            font-size: 30px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 30px 5% 15px;
+            margin-top: 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto 20px;
+        }
+
+        .footer-col h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .footer-col p, .footer-col li {
+            font-size: 14px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-logo-title {
+                flex-direction: column;
+            }
+            .top-bar {
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div>
+            <span><i class="fa-solid fa-graduation-cap"></i> শিক্ষা বোর্ড: মাদ্রাসা শিক্ষা বোর্ড</span>
+        </div>
+        <div>
+            <span><i class="fa-solid fa-phone"></i> হেল্পলাইন: ০১৩০৯১২৭৭৩৯</span>
+        </div>
+    </div>
+
+    <!-- Header Banner -->
+    <header class="header">
+        <div class="header-logo-title">
+            <div class="logo">
+                <i class="fa-solid fa-mosque"></i>
+            </div>
+            <div class="institution-details">
+                <h1>আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা</h1>
+                <p><i class="fa-solid fa-location-dot"></i> আলাদীপাড়া, চৌধুরাণী, পীরগাছা, রংপুর</p>
+                <div class="meta-badges">
+                    <span class="badge"><i class="fa-solid fa-id-card"></i> EIIN: ১২৭৭৩৯</span>
+                    <span class="badge"><i class="fa-solid fa-calendar-days"></i> স্থাপিত: ১৯৭৫ খ্রিস্টাব্দ</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="#" class="active"><i class="fa-solid fa-house"></i> প্রচ্ছদ</a></li>
+            <li><a href="#"><i class="fa-solid fa-address-card"></i> আমাদের সম্পর্কে</a></li>
+            <li><a href="#"><i class="fa-solid fa-user-tie"></i> পরিচালনা পর্ষদ</a></li>
+            <li><a href="#"><i class="fa-solid fa-chalkboard-user"></i> শিক্ষক-শিক্ষিকা</a></li>
+            <li><a href="#"><i class="fa-solid fa-bullhorn"></i> নোটিশ বোর্ড</a></li>
+            <li><a href="#"><i class="fa-solid fa-file-invoice"></i> ফলাফল</a></li>
+            <li><a href="#"><i class="fa-solid fa-images"></i> গ্যালারি</a></li>
+            <li><a href="#"><i class="fa-solid fa-envelope"></i> যোগাযোগ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Ticker Section -->
+    <div class="ticker-container">
+        <div class="ticker-title"><i class="fa-solid fa-bell"></i> সর্বশেষ সংবাদ</div>
+        <div class="ticker-content">
+            আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসায় স্বাগতম। ভর্তি সেশন ২০২৬ এর ভর্তি কার্যক্রম চলছে। আগামী পরীক্ষার সময়সূচী নোটিশ বোর্ডে প্রকাশ করা হয়েছে।
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <!-- Main Body Left -->
+        <main class="main-content">
+            <!-- Welcome Message Card -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-building-columns"></i> প্রতিষ্ঠান সম্পর্কে
+                </div>
+                <div class="card-body">
+                    <p><strong>আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা</strong> রংপুর জেলার পীরগাছা উপজেলাধীন চৌধুরাণী অঞ্চলের একটি ঐতিহ্যবাহী দ্বীনি ও আধুনিক শিক্ষাপ্রতিষ্ঠান। ১৯৭৫ সালে প্রতিষ্ঠিত হওয়ার পর থেকে এই প্রতিষ্ঠানটি অত্যন্ত সুনামের সাথে সুশিক্ষা ও ইসলামিক নৈতিক শিক্ষা প্রদান করে আসছে।</p>
+                    <br>
+                    <p>আমাদের মূল লক্ষ্য হলো প্রতিটি শিক্ষার্থীকে যুগোপযোগী জ্ঞান, প্রযুক্তি এবং আদর্শ ইসলামী সুশিক্ষায় শিক্ষিত করে দেশের সুনাগরিক হিসেবে গড়ে তোলা।</p>
+
+                    <div class="features-grid">
+                        <div class="feature-box">
+                            <i class="fa-solid fa-book-open"></i>
+                            <h4>মানসম্মত শিক্ষা</h4>
+                            <p>অভিজ্ঞ শিক্ষক মণ্ডলী দ্বারা পরিচালিত</p>
+                        </div>
+                        <div class="feature-box">
+                            <i class="fa-solid fa-laptop-code"></i>
+                            <h4>আইসিটি ল্যাব</h4>
+                            <p>আধুনিক কম্পিউটার শিক্ষার সুবিধা</p>
+                        </div>
+                        <div class="feature-box">
+                            <i class="fa-solid fa-mosque"></i>
+                            <h4>দ্বীনি পরিবেশ</h4>
+                            <p>ইসলামী পরিবেশ ও নৈতিক শিক্ষা</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notice Board Main Card -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-scroll"></i> সাম্প্রতিক নোটিশ
+                </div>
+                <div class="card-body">
+                    <ul class="notice-list">
+                        <li>
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <div>
+                                <a href="#" style="text-decoration:none; color:#333; font-weight:bold;">দাখিল পরীক্ষা ২০২৬ এর ফরম পূরণ সংক্রান্ত বিজ্ঞপ্তি</a>
+                                <span class="notice-date"><i class="fa-regular fa-clock"></i> ০৫ নভেম্বর, ২০২৬</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <div>
+                                <a href="#" style="text-decoration:none; color:#333; font-weight:bold;">বার্ষিক পরীক্ষার সংশোধিত সময়সূচি প্রকাশ</a>
+                                <span class="notice-date"><i class="fa-regular fa-clock"></i> ২৮ অক্টোবর, ২০২৬</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <div>
+                                <a href="#" style="text-decoration:none; color:#333; font-weight:bold;">নতুন শিক্ষাবর্ষের ভর্তি নির্দেশিকা ও ফরম বিতরণ</a>
+                                <span class="notice-date"><i class="fa-regular fa-clock"></i> ১৫ অক্টোবর, ২০২৬</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sidebar Right -->
+        <aside class="sidebar">
+            <!-- Superintendent Message Card -->
+            <div class="card superintendent-box">
+                <div class="card-header">
+                    <i class="fa-solid fa-user"></i> প্রতিষ্ঠান প্রধান
+                </div>
+                <div class="card-body">
+                    <!-- Note: Ensure image file name is correct in your folder -->
+                    <img src="superintendent.jpg" alt="সুপারিনটেনডেন্ট" class="superintendent-img" onerror="this.src='https://via.placeholder.com/150x170?text=Superintendent';">
+                    <div class="superintendent-name">মোঃ আব্দুল ওয়াহেদ জিহাদী</div>
+                    <div class="superintendent-title">সুপারিনটেনডেন্ট</div>
+                    <p style="font-size: 13px; text-align: justify; color: #555;">
+                        "বিসমিল্লাহির রহমানির রহিম। আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা সুশিক্ষা ও চরিত্র গঠনের এক নির্ভরযোগ্য প্রতিষ্ঠান। আমাদের লক্ষ্য শিক্ষার্থীদের দ্বীনি ও আধুনিক শিক্ষায় শিক্ষিত করে তোলা।"
+                    </p>
+                </div>
+            </div>
+
+            <!-- Important Links Card -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-link"></i> গুরুত্বপূর্ণ লিংক
+                </div>
+                <div class="card-body" style="padding: 0;">
+                    <ul class="quick-links">
+                        <li><a href="http://www.bmeb.gov.bd" target="_blank"><i class="fa-solid fa-globe"></i> বাংলাদেশ মাদ্রাসা শিক্ষা বোর্ড</a></li>
+                        <li><a href="http://www.moedu.gov.bd" target="_blank"><i class="fa-solid fa-building"></i> শিক্ষা মন্ত্রণালয়</a></li>
+                        <li><a href="http://www.dshe.gov.bd" target="_blank"><i class="fa-solid fa-graduation-cap"></i> মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর</a></li>
+                        <li><a href="http://www.dme.gov.bd" target="_blank"><i class="fa-solid fa-book"></i> মাদ্রাসা শিক্ষা অধিদপ্তর</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>যোগাযোগের ঠিকানা</h3>
+                <p><i class="fa-solid fa-location-dot"></i> আলাদীপাড়া, চৌধুরাণী, পীরগাছা, রংপুর।</p>
+                <p><i class="fa-solid fa-phone"></i> মোবাইল: ০১৩০৯১২৭৭৩৯</p>
+                <p><i class="fa-solid fa-envelope"></i> EIIN: ১২৭৭৩৯</p>
+            </div>
+            <div class="footer-col">
+                <h3>জরুরি লিংক</h3>
+                <p><a href="#" style="color:white; text-decoration:none;">ভর্তি তথ্য</a></p>
+                <p><a href="#" style="color:white; text-decoration:none;">পরীক্ষার ফলাফল</a></p>
+                <p><a href="#" style="color:white; text-decoration:none;">শিক্ষক তালিকা</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>প্রতিষ্ঠান সম্পর্কে</h3>
+                <p>স্থাপিত: ১৯৭৫ খ্রিস্টাব্দ। দ্বীনি ও সাধারণ শিক্ষার এক অপূর্ব সমন্বয় ঘটিয়ে আলোকিত মানুষ গড়ার প্রত্যয়ে নিরলস কাজ করে যাচ্ছে।</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; ২০২৬ আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+</body>
+</html>
