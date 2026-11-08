@@ -4,560 +4,580 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+    <!-- Google Fonts for Bengali (Tiro Bangla & Hind Siliguri) -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            dark: '#004020'
+                        },
+                        accent: '#ffc107'
+                    },
+                    fontFamily: {
+                        bangla: ['Tiro Bangla', 'Hind Siliguri', 'serif', 'sans-serif'],
+                        sans: ['Hind Siliguri', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --primary-color: #006633;
-            --secondary-color: #004020;
-            --accent-color: #ffc107;
-            --text-dark: #333333;
-            --text-light: #ffffff;
-            --bg-light: #f8f9fa;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tiro Bangla', serif, sans-serif;
-        }
-
         body {
-            background-color: #f4f6f9;
-            color: var(--text-dark);
-            line-height: 1.6;
+            font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
         }
-
-        /* Top Bar */
-        .top-bar {
-            background-color: var(--secondary-color);
-            color: var(--text-light);
-            padding: 8px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
+        .heading-font {
+            font-family: 'Tiro Bangla', serif;
         }
-
-        .top-bar i {
-            margin-right: 5px;
-            color: var(--accent-color);
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
-
-        /* Header / Banner */
-        .header {
-            background: linear-gradient(135deg, #005c2d 0%, #003318 100%);
-            color: var(--text-light);
-            padding: 25px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
-        .header-logo-title {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo {
-            width: 90px;
-            height: 90px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            color: var(--primary-color);
-            border: 3px solid var(--accent-color);
-        }
-
-        .institution-details h1 {
-            font-size: 26px;
-            margin-bottom: 5px;
-            color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .institution-details p {
-            font-size: 15px;
-            opacity: 0.9;
-        }
-
-        .meta-badges {
-            display: flex;
-            gap: 15px;
-            margin-top: 8px;
-        }
-
-        .badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 13px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        /* Navigation */
-        .nav-bar {
-            background-color: var(--primary-color);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-bar ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            padding: 0 5%;
-        }
-
-        .nav-bar li a {
-            display: block;
-            color: var(--text-light);
-            text-decoration: none;
-            padding: 12px 18px;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-
-        .nav-bar li a:hover, .nav-bar li a.active {
-            background-color: var(--secondary-color);
-            color: var(--accent-color);
-        }
-
-        /* Ticker / Notice Bar */
-        .ticker-container {
-            display: flex;
-            background: #ffffff;
-            border-bottom: 1px solid #ddd;
-            overflow: hidden;
-        }
-
-        .ticker-title {
-            background: #d9534f;
-            color: white;
-            padding: 10px 20px;
-            font-weight: bold;
+        .animate-marquee {
+            display: inline-block;
             white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .ticker-content {
-            padding: 10px;
-            white-space: nowrap;
-            overflow: hidden;
-            box-sizing: border-box;
             animation: marquee 25s linear infinite;
         }
-
-        .ticker-content:hover {
+        .animate-marquee:hover {
             animation-play-state: paused;
-        }
-
-        @keyframes marquee {
-            0% { transform: translate(100%, 0); }
-            100% { transform: translate(-100%, 0); }
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 2.8fr 1.2fr;
-            gap: 20px;
-        }
-
-        /* Cards */
-        .card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
-            overflow: hidden;
-            border: 1px solid #e9ecef;
-        }
-
-        .card-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 18px;
-            font-size: 18px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 3px solid var(--accent-color);
-        }
-
-        .card-body {
-            padding: 18px;
-        }
-
-        /* Superintendent Box */
-        .superintendent-box {
-            text-align: center;
-        }
-
-        .superintendent-img {
-            width: 150px;
-            height: 170px;
-            object-fit: cover;
-            border-radius: 6px;
-            border: 3px solid var(--primary-color);
-            margin-bottom: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-
-        .superintendent-name {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 17px;
-        }
-
-        .superintendent-title {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        /* Notice Board List */
-        .notice-list {
-            list-style: none;
-        }
-
-        .notice-list li {
-            padding: 10px 0;
-            border-bottom: 1px dashed #ddd;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .notice-list li:last-child {
-            border-bottom: none;
-        }
-
-        .notice-list i {
-            color: var(--primary-color);
-            margin-top: 4px;
-        }
-
-        .notice-date {
-            font-size: 12px;
-            color: #888;
-            display: block;
-        }
-
-        /* Quick Links */
-        .quick-links {
-            list-style: none;
-        }
-
-        .quick-links li a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px;
-            color: #333;
-            text-decoration: none;
-            border-bottom: 1px solid #eee;
-            transition: 0.2s;
-        }
-
-        .quick-links li a:hover {
-            background-color: var(--bg-light);
-            color: var(--primary-color);
-            padding-left: 15px;
-        }
-
-        /* Feature Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .feature-box {
-            background: #fdfdfd;
-            border: 1px solid #e0e0e0;
-            padding: 15px;
-            border-radius: 6px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .feature-box:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .feature-box i {
-            font-size: 30px;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 30px 5% 15px;
-            margin-top: 30px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto 20px;
-        }
-
-        .footer-col h3 {
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 5px;
-            display: inline-block;
-        }
-
-        .footer-col p, .footer-col li {
-            font-size: 14px;
-            margin-bottom: 8px;
-            opacity: 0.9;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 13px;
-            opacity: 0.8;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            .header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .header-logo-title {
-                flex-direction: column;
-            }
-            .top-bar {
-                flex-direction: column;
-                gap: 5px;
-                text-align: center;
-            }
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-100 text-slate-800 antialiased flex flex-col min-h-screen">
 
-    <!-- Top Info Bar -->
-    <div class="top-bar">
-        <div>
-            <span><i class="fa-solid fa-graduation-cap"></i> শিক্ষা বোর্ড: মাদ্রাসা শিক্ষা বোর্ড</span>
+    <!-- Top Bar -->
+    <div class="bg-brand-dark text-white text-xs sm:text-sm py-2 px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-2 border-b border-brand-700">
+        <div class="flex items-center gap-4 flex-wrap justify-center">
+            <span><i class="fa-solid fa-graduation-cap text-accent mr-1"></i> বোর্ড: বাংলাদেশ মাদ্রাসা শিক্ষা বোর্ড</span>
+            <span><i class="fa-solid fa-id-card text-accent mr-1"></i> EIIN: ১২৭৭৩৯</span>
         </div>
-        <div>
-            <span><i class="fa-solid fa-phone"></i> হেল্পলাইন: ০১৩০৯১২৭৭৩৯</span>
+        <div class="flex items-center gap-4">
+            <span id="current-date"><i class="fa-solid fa-calendar-day text-accent mr-1"></i> আজ: লোড হচ্ছে...</span>
+            <a href="tel:01309127739" class="hover:text-accent transition"><i class="fa-solid fa-phone text-accent mr-1"></i> ০১৩০৯১২৭৭৩৯</a>
         </div>
     </div>
 
-    <!-- Header Banner -->
-    <header class="header">
-        <div class="header-logo-title">
-            <div class="logo">
-                <i class="fa-solid fa-mosque"></i>
-            </div>
-            <div class="institution-details">
-                <h1>আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা</h1>
-                <p><i class="fa-solid fa-location-dot"></i> আলাদীপাড়া, চৌধুরাণী, পীরগাছা, রংপুর</p>
-                <div class="meta-badges">
-                    <span class="badge"><i class="fa-solid fa-id-card"></i> EIIN: ১২৭৭৩৯</span>
-                    <span class="badge"><i class="fa-solid fa-calendar-days"></i> স্থাপিত: ১৯৭৫ খ্রিস্টাব্দ</span>
+    <!-- Header / Banner -->
+    <header class="bg-gradient-to-r from-brand-900 via-brand-800 to-brand-900 text-white py-8 px-4 sm:px-8 border-b-4 border-accent shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+                <div class="w-24 h-24 sm:w-28 sm:h-28 bg-white rounded-full flex items-center justify-center text-brand-800 text-4xl sm:text-5xl border-4 border-accent shadow-lg flex-shrink-0">
+                    <i class="fa-solid fa-mosque"></i>
                 </div>
+                <div>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold heading-font text-white drop-shadow">আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা</h1>
+                    <p class="text-emerald-100 text-sm sm:text-base mt-1"><i class="fa-solid fa-location-dot text-accent mr-1"></i> আলাদীপাড়া, চৌধুরাণী, পীরগাছা, রংপুর।</p>
+                    <div class="flex flex-wrap justify-center sm:justify-start gap-2 mt-3">
+                        <span class="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/30">
+                            <i class="fa-solid fa-calendar-check mr-1 text-accent"></i> স্থাপিত: ১৯৭৫ খ্রিস্টাব্দ
+                        </span>
+                        <span class="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/30">
+                            <i class="fa-solid fa-code-branch mr-1 text-accent"></i> কোড: ৭৭১৬
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admission Badge -->
+            <div class="hidden lg:flex flex-col items-center justify-center bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 text-center">
+                <span class="text-accent text-xs font-bold uppercase tracking-wider">ভর্তি চলছে</span>
+                <span class="text-lg font-bold">শিক্ষাবর্ষ ২০২৬</span>
+                <a href="#notices" class="mt-2 text-xs bg-accent hover:bg-amber-400 text-brand-900 font-bold px-4 py-1.5 rounded-full transition shadow">ভর্তি ফরম পাবেন</a>
             </div>
         </div>
     </header>
 
     <!-- Navigation Menu -->
-    <nav class="nav-bar">
-        <ul>
-            <li><a href="#" class="active"><i class="fa-solid fa-house"></i> প্রচ্ছদ</a></li>
-            <li><a href="#"><i class="fa-solid fa-address-card"></i> আমাদের সম্পর্কে</a></li>
-            <li><a href="#"><i class="fa-solid fa-user-tie"></i> পরিচালনা পর্ষদ</a></li>
-            <li><a href="#"><i class="fa-solid fa-chalkboard-user"></i> শিক্ষক-শিক্ষিকা</a></li>
-            <li><a href="#"><i class="fa-solid fa-bullhorn"></i> নোটিশ বোর্ড</a></li>
-            <li><a href="#"><i class="fa-solid fa-file-invoice"></i> ফলাফল</a></li>
-            <li><a href="#"><i class="fa-solid fa-images"></i> গ্যালারি</a></li>
-            <li><a href="#"><i class="fa-solid fa-envelope"></i> যোগাযোগ</a></li>
-        </ul>
+    <nav class="bg-brand-700 text-white sticky top-0 z-40 shadow-md">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Desktop Links -->
+            <ul class="hidden md:flex flex-wrap items-center">
+                <li><a href="#home" class="block px-4 py-3 hover:bg-brand-900 hover:text-accent font-medium border-r border-brand-600 transition"><i class="fa-solid fa-house mr-1"></i> প্রচ্ছদ</a></li>
+                <li><a href="#about" class="block px-4 py-3 hover:bg-brand-900 hover:text-accent font-medium border-r border-brand-600 transition"><i class="fa-solid fa-address-card mr-1"></i> আমাদের সম্পর্কে</a></li>
+                <li><a href="#administration" class="block px-4 py-3 hover:bg-brand-900 hover:text-accent font-medium border-r border-brand-600 transition"><i class="fa-solid fa-user-tie mr-1"></i> পরিচালনা পর্ষদ</a></li>
+                <li><a href="#teachers" class="block px-4 py-3 hover:bg-brand-900 hover:text-accent font-medium border-r border-brand-600 transition"><i class="fa-solid fa-chalkboard-user mr-1"></i> শিক্ষক-শিক্ষিকা</a></li>
+                <li><a href="#notices" class="block px-4 py-3 hover:bg-brand-900 hover:text-accent font-medium border-r border-brand-600 transition"><i class="fa-solid fa-bullhorn mr-1"></i> নোটিশ বোর্ড</a></li>
+                <li><a href="#features" class="block px-4 py-3 hover:bg-brand-900 hover:text-accent font-medium border-r border-brand-600 transition"><i class="fa-solid fa-star mr-1"></i> সুবিধা</a></li>
+                <li><a href="#contact" class="block px-4 py-3 hover:bg-brand-900 hover:text-accent font-medium transition"><i class="fa-solid fa-envelope mr-1"></i> যোগাযোগ</a></li>
+            </ul>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden w-full px-4 py-3 flex items-center justify-between font-bold text-sm bg-brand-800 focus:outline-none">
+                <span><i class="fa-solid fa-bars mr-2"></i> মেনু নির্বাচন করুন</span>
+                <i class="fa-solid fa-chevron-down transition-transform duration-300" id="menu-arrow"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-800 border-t border-brand-600 divide-y divide-brand-700">
+            <a href="#home" class="mobile-nav-link block px-5 py-2.5 hover:bg-brand-900 text-sm"><i class="fa-solid fa-house w-6"></i> প্রচ্ছদ</a>
+            <a href="#about" class="mobile-nav-link block px-5 py-2.5 hover:bg-brand-900 text-sm"><i class="fa-solid fa-address-card w-6"></i> আমাদের সম্পর্কে</a>
+            <a href="#administration" class="mobile-nav-link block px-5 py-2.5 hover:bg-brand-900 text-sm"><i class="fa-solid fa-user-tie w-6"></i> পরিচালনা পর্ষদ</a>
+            <a href="#teachers" class="mobile-nav-link block px-5 py-2.5 hover:bg-brand-900 text-sm"><i class="fa-solid fa-chalkboard-user w-6"></i> শিক্ষক-শিক্ষিকা</a>
+            <a href="#notices" class="mobile-nav-link block px-5 py-2.5 hover:bg-brand-900 text-sm"><i class="fa-solid fa-bullhorn w-6"></i> নোটিশ বোর্ড</a>
+            <a href="#features" class="mobile-nav-link block px-5 py-2.5 hover:bg-brand-900 text-sm"><i class="fa-solid fa-star w-6"></i> বিশেষ বৈশিষ্ট্য</a>
+            <a href="#contact" class="mobile-nav-link block px-5 py-2.5 hover:bg-brand-900 text-sm"><i class="fa-solid fa-envelope w-6"></i> যোগাযোগ</a>
+        </div>
     </nav>
 
-    <!-- Ticker Section -->
-    <div class="ticker-container">
-        <div class="ticker-title"><i class="fa-solid fa-bell"></i> সর্বশেষ সংবাদ</div>
-        <div class="ticker-content">
-            আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসায় স্বাগতম। ভর্তি সেশন ২০২৬ এর ভর্তি কার্যক্রম চলছে। আগামী পরীক্ষার সময়সূচী নোটিশ বোর্ডে প্রকাশ করা হয়েছে।
+    <!-- Ticker / News Section -->
+    <div class="bg-white border-b border-slate-200 flex items-center shadow-inner overflow-hidden">
+        <div class="bg-red-600 text-white px-4 py-2 font-bold text-xs sm:text-sm whitespace-nowrap flex items-center gap-2 z-10 shadow">
+            <i class="fa-solid fa-bullhorn animate-pulse"></i> সংবাদ:
+        </div>
+        <div class="overflow-hidden w-full py-2 text-xs sm:text-sm text-slate-700">
+            <div class="animate-marquee">
+                আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসায় স্বাগতম। ✦ ২০২৬ সেশনের নতুন ভর্তি কার্যক্রম চলছে। ✦ দাখিল ও অভ্যন্তরীণ বার্ষিক পরীক্ষার সময়সূচী নোটিশ বোর্ডে প্রকাশ করা হয়েছে। ✦ সুশিক্ষায় শিক্ষিত আলোকিত মানুষ গড়াই আমাদের মূল লক্ষ্য।
+            </div>
         </div>
     </div>
 
     <!-- Main Content Container -->
-    <div class="container">
-        <!-- Main Body Left -->
-        <main class="main-content">
-            <!-- Welcome Message Card -->
-            <div class="card">
-                <div class="card-header">
-                    <i class="fa-solid fa-building-columns"></i> প্রতিষ্ঠান সম্পর্কে
+    <div id="home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Main Left Column -->
+        <main class="lg:col-span-8 space-y-8">
+            
+            <!-- About Section Card -->
+            <section id="about" class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                <div class="bg-brand-800 text-white px-6 py-3 font-bold text-lg heading-font flex items-center justify-between border-b-2 border-accent">
+                    <span><i class="fa-solid fa-building-columns text-accent mr-2"></i> প্রতিষ্ঠানের পরিচিতি ও ঐতিহ্য</span>
                 </div>
-                <div class="card-body">
-                    <p><strong>আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা</strong> রংপুর জেলার পীরগাছা উপজেলাধীন চৌধুরাণী অঞ্চলের একটি ঐতিহ্যবাহী দ্বীনি ও আধুনিক শিক্ষাপ্রতিষ্ঠান। ১৯৭৫ সালে প্রতিষ্ঠিত হওয়ার পর থেকে এই প্রতিষ্ঠানটি অত্যন্ত সুনামের সাথে সুশিক্ষা ও ইসলামিক নৈতিক শিক্ষা প্রদান করে আসছে।</p>
-                    <br>
-                    <p>আমাদের মূল লক্ষ্য হলো প্রতিটি শিক্ষার্থীকে যুগোপযোগী জ্ঞান, প্রযুক্তি এবং আদর্শ ইসলামী সুশিক্ষায় শিক্ষিত করে দেশের সুনাগরিক হিসেবে গড়ে তোলা।</p>
+                <div class="p-6 text-slate-700 space-y-4 leading-relaxed text-justify">
+                    <p class="font-semibold text-brand-900 text-lg">
+                        বিসমিল্লাহির রহমানির রহিম
+                    </p>
+                    <p>
+                        রংপুর জেলার পীরগাছা উপজেলাধীন চৌধুরাণী অঞ্চলের ঐতিহাসিক আলাদীপাড়ায় অবস্থিত <strong class="text-brand-900">আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা</strong> সুশিক্ষা ও আদর্শ চরিত্র গঠনের এক নির্ভরযোগ্য দ্বীনি ও আধুনিক শিক্ষাপ্রতিষ্ঠান। <strong>১৯৭৫ সালে</strong> অত্র এলাকার বিদ্যোৎসাহী ও গুণী ব্যক্তিত্বদের উদ্যোগে এটি প্রতিষ্ঠিত হয়। 
+                    </p>
+                    <p>
+                        প্রতিষ্ঠার পর থেকেই প্রতিষ্ঠানটি দ্বীনি শিক্ষার পাশাপাশি সাধারণ ও আধুনিক প্রযুক্তিভিত্তিক শিক্ষার সুসমন্বয় ঘটিয়ে আলো ছড়িয়ে আসছে। দক্ষ ও অভিজ্ঞ শিক্ষকমণ্ডলীর তত্ত্বাবধানে শিক্ষার্থীদের নৈতিকতা, সুশাসন ও মেধার বিকাশে আমরা অঙ্গীকারাবদ্ধ।
+                    </p>
 
-                    <div class="features-grid">
-                        <div class="feature-box">
-                            <i class="fa-solid fa-book-open"></i>
-                            <h4>মানসম্মত শিক্ষা</h4>
-                            <p>অভিজ্ঞ শিক্ষক মণ্ডলী দ্বারা পরিচালিত</p>
+                    <!-- Embedded Highlights Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-lg text-center">
+                            <i class="fa-solid fa-quran text-3xl text-brand-700 mb-2"></i>
+                            <h4 class="font-bold text-brand-900 text-sm">দ্বীনি ও নৈতিক পরিবেশ</h4>
+                            <p class="text-xs text-slate-600 mt-1">ইসলামী শিক্ষার সুসমন্বয়</p>
                         </div>
-                        <div class="feature-box">
-                            <i class="fa-solid fa-laptop-code"></i>
-                            <h4>আইসিটি ল্যাব</h4>
-                            <p>আধুনিক কম্পিউটার শিক্ষার সুবিধা</p>
+                        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-lg text-center">
+                            <i class="fa-solid fa-laptop-code text-3xl text-brand-700 mb-2"></i>
+                            <h4 class="font-bold text-brand-900 text-sm">কম্পিউটার ল্যাব</h4>
+                            <p class="text-xs text-slate-600 mt-1">আধুনিক আইসিটি পাঠদান</p>
                         </div>
-                        <div class="feature-box">
-                            <i class="fa-solid fa-mosque"></i>
-                            <h4>দ্বীনি পরিবেশ</h4>
-                            <p>ইসলামী পরিবেশ ও নৈতিক শিক্ষা</p>
+                        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-lg text-center">
+                            <i class="fa-solid fa-shield-halved text-3xl text-brand-700 mb-2"></i>
+                            <h4 class="font-bold text-brand-900 text-sm">সিসিটিভি নিরাপত্তা</h4>
+                            <p class="text-xs text-slate-600 mt-1">২৪/৭ সার্বক্ষণিক নজরদারি</p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Notice Board Main Card -->
-            <div class="card">
-                <div class="card-header">
-                    <i class="fa-solid fa-scroll"></i> সাম্প্রতিক নোটিশ
+            <!-- Features Grid Section -->
+            <section id="features" class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                <div class="bg-brand-800 text-white px-6 py-3 font-bold text-lg heading-font flex items-center justify-between border-b-2 border-accent">
+                    <span><i class="fa-solid fa-star text-accent mr-2"></i> আমাদের বিশেষ বৈশিষ্ট্যসমূহ</span>
                 </div>
-                <div class="card-body">
-                    <ul class="notice-list">
-                        <li>
-                            <i class="fa-solid fa-file-pdf"></i>
-                            <div>
-                                <a href="#" style="text-decoration:none; color:#333; font-weight:bold;">দাখিল পরীক্ষা ২০২৬ এর ফরম পূরণ সংক্রান্ত বিজ্ঞপ্তি</a>
-                                <span class="notice-date"><i class="fa-regular fa-clock"></i> ০৫ নভেম্বর, ২০২৬</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-file-pdf"></i>
-                            <div>
-                                <a href="#" style="text-decoration:none; color:#333; font-weight:bold;">বার্ষিক পরীক্ষার সংশোধিত সময়সূচি প্রকাশ</a>
-                                <span class="notice-date"><i class="fa-regular fa-clock"></i> ২৮ অক্টোবর, ২০২৬</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-file-pdf"></i>
-                            <div>
-                                <a href="#" style="text-decoration:none; color:#333; font-weight:bold;">নতুন শিক্ষাবর্ষের ভর্তি নির্দেশিকা ও ফরম বিতরণ</a>
-                                <span class="notice-date"><i class="fa-regular fa-clock"></i> ১৫ অক্টোবর, ২০২৬</span>
-                            </div>
-                        </li>
+                <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-4 p-4 border border-slate-100 rounded-lg bg-slate-50 hover:bg-emerald-50 transition">
+                        <div class="bg-brand-100 text-brand-800 p-3 rounded-lg text-xl flex-shrink-0">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-900">মানসম্মত শিক্ষা</h4>
+                            <p class="text-xs text-slate-600 mt-1">অভিজ্ঞ ও নিবেদিতপ্রাণ শিক্ষকমণ্ডলী দ্বারা পাঠদান ও নিয়মিত মূল্যায়ন পরীক্ষা।</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 border border-slate-100 rounded-lg bg-slate-50 hover:bg-emerald-50 transition">
+                        <div class="bg-brand-100 text-brand-800 p-3 rounded-lg text-xl flex-shrink-0">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-900">কম্পিউটার ল্যাব</h4>
+                            <p class="text-xs text-slate-600 mt-1">সুসজ্জিত ও আধুনিক প্রযুক্তিনির্ভর আইসিটি ল্যাব সুবিধা।</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 border border-slate-100 rounded-lg bg-slate-50 hover:bg-emerald-50 transition">
+                        <div class="bg-brand-100 text-brand-800 p-3 rounded-lg text-xl flex-shrink-0">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-900">সিসি ক্যামেরা সুবিধা</h4>
+                            <p class="text-xs text-slate-600 mt-1">ক্যাম্পাসের নিরাপত্তা রক্ষায় সার্বক্ষণিক সিসিটিভি ক্যামেরা দ্বারা নিয়ন্ত্রিত।</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 border border-slate-100 rounded-lg bg-slate-50 hover:bg-emerald-50 transition">
+                        <div class="bg-brand-100 text-brand-800 p-3 rounded-lg text-xl flex-shrink-0">
+                            <i class="fa-solid fa-mosque"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-900">দ্বীনি ও নৈতিক পরিবেশ</h4>
+                            <p class="text-xs text-slate-600 mt-1">সুশিক্ষা, শৃঙ্খলা এবং চরিত্র গঠনের শতভাগ নিশ্চয়তা।</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Teachers Section -->
+            <section id="teachers" class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                <div class="bg-brand-800 text-white px-6 py-3 font-bold text-lg heading-font flex items-center justify-between border-b-2 border-accent flex-wrap gap-2">
+                    <span><i class="fa-solid fa-chalkboard-user text-accent mr-2"></i> শিক্ষক-শিক্ষিকাবৃন্দ</span>
+                    
+                    <!-- Search Input -->
+                    <div class="relative w-full sm:w-64">
+                        <input type="text" id="teacher-search" placeholder="শিক্ষক খুঁজুন..." class="w-full pl-8 pr-3 py-1 rounded text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-accent">
+                        <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2 text-slate-400 text-xs"></i>
+                    </div>
+                </div>
+
+                <div class="p-6">
+                    <!-- Teachers Grid Container -->
+                    <div id="teachers-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Dynamic content injected by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notice Board Section -->
+            <section id="notices" class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                <div class="bg-brand-800 text-white px-6 py-3 font-bold text-lg heading-font flex items-center justify-between border-b-2 border-accent">
+                    <span><i class="fa-solid fa-bullhorn text-accent mr-2"></i> সাম্প্রতিক নোটিশ বোর্ড</span>
+                    <span class="text-xs bg-brand-900 px-2.5 py-1 rounded-full text-accent border border-brand-600">আপডেট</span>
+                </div>
+                <div class="p-6">
+                    <ul class="divide-y divide-slate-100" id="notice-list">
+                        <!-- Dynamic Notice Items -->
                     </ul>
                 </div>
-            </div>
+            </section>
+
         </main>
 
-        <!-- Sidebar Right -->
-        <aside class="sidebar">
-            <!-- Superintendent Message Card -->
-            <div class="card superintendent-box">
-                <div class="card-header">
-                    <i class="fa-solid fa-user"></i> প্রতিষ্ঠান প্রধান
-                </div>
-                <div class="card-body">
-                    <!-- Note: Ensure image file name is correct in your folder -->
-                    <img src="superintendent.jpg" alt="সুপারিনটেনডেন্ট" class="superintendent-img" onerror="this.src='https://via.placeholder.com/150x170?text=Superintendent';">
-                    <div class="superintendent-name">মোঃ আব্দুল ওয়াহেদ জিহাদী</div>
-                    <div class="superintendent-title">সুপারিনটেনডেন্ট</div>
-                    <p style="font-size: 13px; text-align: justify; color: #555;">
-                        "বিসমিল্লাহির রহমানির রহিম। আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা সুশিক্ষা ও চরিত্র গঠনের এক নির্ভরযোগ্য প্রতিষ্ঠান। আমাদের লক্ষ্য শিক্ষার্থীদের দ্বীনি ও আধুনিক শিক্ষায় শিক্ষিত করে তোলা।"
+        <!-- Right Sidebar -->
+        <aside class="lg:col-span-4 space-y-8" id="administration">
+            
+            <!-- Superintendent & Assistant Principal Cards Sidebar -->
+            <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
                 
-                 <div class="card-header">   
-                     <i class="fa-solid fa-user"></i> সহকারী প্রধান
+                <!-- Head Superintendent -->
+                <div class="bg-brand-800 text-white px-4 py-2.5 font-bold text-base heading-font flex items-center gap-2 border-b-2 border-accent">
+                    <i class="fa-solid fa-user-tie text-accent"></i> প্রতিষ্ঠান প্রধান
                 </div>
-                <div class="card-body">
-                    <!-- Note: Ensure image file name is correct in your folder -->
-                    <img src="assistant.jpg" alt="সহকারী সুপারিনটেনডেন্ট" class="assistant-img" onerror="this.src='https://via.placeholder.com/150x170?text=Superintendent';">
-                    <div class="assistant-name">মোঃ নুরুন্নবী মিয়া</div>
-                    <div class="assistantt-title">সহকারী সুপারিনটেনডেন্ট</div>
-                    <p style="font-size: 13px; text-align: justify; color: #555;">
+                <div class="p-5 text-center">
+                    <img src="superintendent.jpg" alt="সুপারিনটেনডেন্ট" class="w-32 h-40 object-cover rounded-md mx-auto border-4 border-brand-700 shadow-md mb-3" onerror="this.src='https://placehold.co/150x180/166534/FFFFFF?text=Superintendent';">
+                    <h3 class="font-bold text-brand-900 text-lg">মোঃ আব্দুল ওয়াহেদ জিহাদী</h3>
+                    <p class="text-xs font-semibold text-emerald-700 mb-3">সুপারিনটেনডেন্ট</p>
+                    <blockquote class="text-xs text-slate-600 text-justify bg-slate-50 p-3 rounded-lg border-l-2 border-brand-700 leading-relaxed italic">
                         "বিসমিল্লাহির রহমানির রহিম। আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা সুশিক্ষা ও চরিত্র গঠনের এক নির্ভরযোগ্য প্রতিষ্ঠান। আমাদের লক্ষ্য শিক্ষার্থীদের দ্বীনি ও আধুনিক শিক্ষায় শিক্ষিত করে তোলা।"
-                    </p>
-                    </p>
+                    </blockquote>
+                </div>
+
+                <div class="border-t border-dashed border-slate-200 my-1"></div>
+
+                <!-- Assistant Head -->
+                <div class="bg-brand-700 text-white px-4 py-2.5 font-bold text-base heading-font flex items-center gap-2 border-b-2 border-accent">
+                    <i class="fa-solid fa-user-graduate text-accent"></i> সহকারী প্রধান
+                </div>
+                <div class="p-5 text-center">
+                    <img src="assistant.jpg" alt="সহকারী সুপারিনটেনডেন্ট" class="w-32 h-40 object-cover rounded-md mx-auto border-4 border-brand-600 shadow-md mb-3" onerror="this.src='https://placehold.co/150x180/15803d/FFFFFF?text=Assistant';">
+                    <h3 class="font-bold text-brand-900 text-lg">মোঃ নুরুন্নবী মিয়া</h3>
+                    <p class="text-xs font-semibold text-emerald-700 mb-3">সহকারী সুপারিনটেনডেন্ট</p>
+                    <blockquote class="text-xs text-slate-600 text-justify bg-slate-50 p-3 rounded-lg border-l-2 border-brand-600 leading-relaxed italic">
+                        "বিসমিল্লাহির রহমানির রহিম। আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা সুশিক্ষা ও চরিত্র গঠনের এক নির্ভরযোগ্য প্রতিষ্ঠান। আমাদের লক্ষ্য শিক্ষার্থীদের দ্বীনি ও আধুনিক শিক্ষায় শিক্ষিত করে তোলা।"
+                    </blockquote>
                 </div>
             </div>
 
-            <!-- Important Links Card -->
-            <div class="card">
-                <div class="card-header">
-                    <i class="fa-solid fa-link"></i> গুরুত্বপূর্ণ লিংক
+            <!-- Quick Links -->
+            <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                <div class="bg-brand-800 text-white px-4 py-2.5 font-bold text-base heading-font flex items-center gap-2 border-b-2 border-accent">
+                    <i class="fa-solid fa-link text-accent"></i> গুরুত্বপূর্ণ লিংক
                 </div>
-                <div class="card-body" style="padding: 0;">
-                    <ul class="quick-links">
-                        <li><a href="http://www.bmeb.gov.bd" target="_blank"><i class="fa-solid fa-globe"></i> বাংলাদেশ মাদ্রাসা শিক্ষা বোর্ড</a></li>
-                        <li><a href="http://www.moedu.gov.bd" target="_blank"><i class="fa-solid fa-building"></i> শিক্ষা মন্ত্রণালয়</a></li>
-                        <li><a href="http://www.dshe.gov.bd" target="_blank"><i class="fa-solid fa-graduation-cap"></i> মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর</a></li>
-                        <li><a href="http://www.dme.gov.bd" target="_blank"><i class="fa-solid fa-book"></i> মাদ্রাসা শিক্ষা অধিদপ্তর</a></li>
+                <div class="p-2">
+                    <ul class="divide-y divide-slate-100 text-sm">
+                        <li>
+                            <a href="http://www.bmeb.gov.bd" target="_blank" class="flex items-center gap-3 p-3 text-slate-700 hover:bg-emerald-50 hover:text-brand-900 rounded-lg transition font-medium">
+                                <i class="fa-solid fa-globe text-brand-700"></i> বাংলাদেশ মাদ্রাসা শিক্ষা বোর্ড
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.moedu.gov.bd" target="_blank" class="flex items-center gap-3 p-3 text-slate-700 hover:bg-emerald-50 hover:text-brand-900 rounded-lg transition font-medium">
+                                <i class="fa-solid fa-building text-brand-700"></i> শিক্ষা মন্ত্রণালয়
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.dshe.gov.bd" target="_blank" class="flex items-center gap-3 p-3 text-slate-700 hover:bg-emerald-50 hover:text-brand-900 rounded-lg transition font-medium">
+                                <i class="fa-solid fa-graduation-cap text-brand-700"></i> মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.dme.gov.bd" target="_blank" class="flex items-center gap-3 p-3 text-slate-700 hover:bg-emerald-50 hover:text-brand-900 rounded-lg transition font-medium">
+                                <i class="fa-solid fa-book-bookmark text-brand-700"></i> মাদ্রাসা শিক্ষা অধিদপ্তর
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
+
+            <!-- Emergency Helpline Box -->
+            <div class="bg-gradient-to-br from-brand-800 to-brand-900 text-white rounded-xl shadow-md p-5 border-l-4 border-accent">
+                <h4 class="font-bold text-lg mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-headset text-accent"></i> জরুরি যোগাযোগ
+                </h4>
+                <p class="text-xs text-emerald-100 mb-4 leading-relaxed">যে কোনো তথ্য ও অনুসন্ধানের জন্য সরাসরি মাদ্রাসা অফিসে যোগাযোগ অথবা কল করুন:</p>
+                <a href="tel:01309127739" class="block text-center bg-accent text-brand-900 font-bold py-2 rounded-lg shadow hover:bg-amber-400 transition text-sm">
+                    <i class="fa-solid fa-phone mr-1"></i> ০১৩০৯১২৭৭৩৯
+                </a>
+            </div>
+
         </aside>
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3>যোগাযোগের ঠিকানা</h3>
-                <p><i class="fa-solid fa-location-dot"></i> আলাদীপাড়া, চৌধুরাণী, পীরগাছা, রংপুর।</p>
-                <p><i class="fa-solid fa-phone"></i> মোবাইল: ০১৩০৯১২৭৭৩৯</p>
-                <p><i class="fa-solid fa-envelope"></i> EIIN: ১২৭৭৩৯</p>
+    <footer id="contact" class="bg-brand-dark text-white mt-12 border-t-4 border-accent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Column 1 -->
+            <div>
+                <h3 class="text-lg font-bold heading-font text-accent pb-2 border-b-2 border-accent/30 inline-block mb-4">
+                    যোগাযোগের ঠিকানা
+                </h3>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-location-dot text-accent mt-1"></i>
+                        <span>আলাদীপাড়া, চৌধুরাণী, পীরগাছা, রংপুর।</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-phone text-accent"></i>
+                        <span>০১৩০৯১২৭৭৩৯</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-id-card text-accent"></i>
+                        <span>EIIN: ১২৭৭৩৯</span>
+                    </li>
+                </ul>
             </div>
-            <div class="footer-col">
-                <h3>জরুরি লিংক</h3>
-                <p><a href="#" style="color:white; text-decoration:none;">ভর্তি তথ্য</a></p>
-                <p><a href="#" style="color:white; text-decoration:none;">পরীক্ষার ফলাফল</a></p>
-                <p><a href="#" style="color:white; text-decoration:none;">শিক্ষক তালিকা</a></p>
+
+            <!-- Column 2 -->
+            <div>
+                <h3 class="text-lg font-bold heading-font text-accent pb-2 border-b-2 border-accent/30 inline-block mb-4">
+                    জরুরি নেভিগেশন
+                </h3>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="#about" class="hover:text-accent transition"><i class="fa-solid fa-angle-right text-accent mr-1"></i> মাদ্রাসা পরিচিতি</a></li>
+                    <li><a href="#teachers" class="hover:text-accent transition"><i class="fa-solid fa-angle-right text-accent mr-1"></i> শিক্ষক তালিকা</a></li>
+                    <li><a href="#notices" class="hover:text-accent transition"><i class="fa-solid fa-angle-right text-accent mr-1"></i> পরীক্ষার নোটিশ</a></li>
+                    <li><a href="#administration" class="hover:text-accent transition"><i class="fa-solid fa-angle-right text-accent mr-1"></i> প্রশাসন ও পরিচালনা পর্ষদ</a></li>
+                </ul>
             </div>
-            <div class="footer-col">
-                <h3>প্রতিষ্ঠান সম্পর্কে</h3>
-                <p>স্থাপিত: ১৯৭৫ খ্রিস্টাব্দ। দ্বীনি ও সাধারণ শিক্ষার এক অপূর্ব সমন্বয় ঘটিয়ে আলোকিত মানুষ গড়ার প্রত্যয়ে নিরলস কাজ করে যাচ্ছে।</p>
+
+            <!-- Column 3 -->
+            <div>
+                <h3 class="text-lg font-bold heading-font text-accent pb-2 border-b-2 border-accent/30 inline-block mb-4">
+                    আমাদের অঙ্গীকার
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    ১৯৭৫ সাল থেকে আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা সুশিক্ষা ও চরিত্র গঠনের বিশ্বস্ত প্রতিষ্ঠান হিসেবে আলো ছড়িয়ে আসছে। আমরা দ্বীনি ও আধুনিক যুগোপযোগী শিক্ষা সমন্বয়ে একটি আদর্শ প্রবংশ তৈরি করতে প্রতিশ্রুতিবদ্ধ।
+                </p>
             </div>
         </div>
-        <div class="footer-bottom">
+
+        <div class="bg-brand-900/80 py-4 text-center text-xs text-slate-400 border-t border-brand-800">
             <p>&copy; ২০২৬ আলাদীপাড়া আজিজিয়া দ্বি-মুখী দাখিল মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।</p>
         </div>
     </footer>
 
+    <!-- Notice Modal -->
+    <div id="notice-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200">
+            <div class="bg-brand-800 text-white px-5 py-3 flex items-center justify-between">
+                <h3 class="font-bold text-base heading-font" id="modal-title">নোটিশ বিস্তারিত</h3>
+                <button id="close-modal-btn" class="text-slate-200 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-6 text-slate-700 space-y-4 text-sm" id="modal-body">
+                <!-- Modal Body Content -->
+            </div>
+            <div class="bg-slate-50 px-5 py-3 text-right border-t border-slate-100">
+                <button id="modal-close-action" class="bg-brand-800 hover:bg-brand-900 text-white text-xs px-4 py-2 rounded-lg font-medium transition">বন্ধ করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Teacher Data
+        const teachersData = [
+            { name: 'মোঃ আব্দুল ওয়াহেদ জিহাদী', title: 'সুপারিনটেনডেন্ট', index: '৩১২৩৪৫', phone: '০১৩০৯১২৭৭৩৯', image: 'superintendent.jpg' },
+            { name: 'মোঃ নুরুন্নবী মিয়া', title: 'সহকারী সুপারিনটেনডেন্ট', index: '৩১২২৪৬', phone: '০১৭১২৩৪৫৬৭৮', image: 'assistant.jpg' },
+            { name: 'মাওলানা মোঃ রফিকুল ইসলাম', title: 'সহকারী শিক্ষক (আরবি)', index: '৩১২৩৪৭', phone: '০১৭২২২২২২২২', image: '' },
+            { name: 'মোঃ শফিকুল ইসলাম', title: 'সহকারী শিক্ষক (গণিত)', index: '৩১২৩৪৮', phone: '০১৭৩৩৩৩৩৩৩৩', image: '' },
+            { name: 'মোছাঃ রেবেকা খাতুন', title: 'সহকারী শিক্ষিকা (ইংরেজি)', index: '৩১২৩৪৯', phone: '০১৭৪৪৪৪৪৪৪৪', image: '' },
+            { name: 'মোঃ আমিনুল ইসলাম', title: 'সহকারী শিক্ষক (আইসিটি)', index: '৩১২৩৫০', phone: '০১৭৫৫৫৫৫৫৫৫', image: '' }
+        ];
+
+        // Notice Data
+        const noticesData = [
+            {
+                id: 1,
+                title: 'দাখিল পরীক্ষা ২০২৬ এর ফরম পূরণ সংক্রান্ত বিজ্ঞপ্তি',
+                date: '০৫ নভেম্বর, ২০২৬',
+                content: 'সকল দাখিল পরীক্ষার্থীদের জানানো যাচ্ছে যে, ২০২৬ সালের ফরম পূরণের শেষ সময় আগামী ১৫ নভেম্বর ২০২৬। প্রয়োজনীয় কাগজপত্রসহ অফিসে যোগাযোগ করুন।'
+            },
+            {
+                id: 2,
+                title: 'বার্ষিক পরীক্ষার সংশোধিত সময়সূচি প্রকাশ',
+                date: '২৮ অক্টোবর, ২০২৬',
+                content: 'আগামী ২০২৬ সালের ১ম শ্রেণি হতে ৯ ১ম শ্রেণির বার্ষিক পরীক্ষার চূড়ান্ত সময়সূচি বোর্ডের পরামর্শক্রমে প্রকাশ করা হলো। সকল শিক্ষার্থীদের রুটিন অনুযায়ী উপস্থিত থাকতে বলা হচ্ছে।'
+            },
+            {
+                id: 3,
+                title: 'নতুন শিক্ষাবর্ষের ভর্তি নির্দেশিকা ও ফরম বিতরণ',
+                date: '১৫ অক্টোবর, ২০২৬',
+                content: '২০২৬ শিক্ষাবর্ষে ৬ষ্ঠ হতে ৯মন শ্রেণি পর্যন্ত ভর্তির আবেদন ফরম প্রতিষ্ঠান অফিস কক্ষে সকাল ৯টা থেকে বিকাল ৪টা পর্যন্ত পাওয়া যাবে।'
+            }
+        ];
+
+        // DOM elements
+        const teachersGrid = document.getElementById('teachers-grid');
+        const teacherSearch = document.getElementById('teacher-search');
+        const noticeList = document.getElementById('notice-list');
+        const noticeModal = document.getElementById('notice-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modalCloseAction = document.getElementById('modal-close-action');
+
+        // Display Current Date in Bengali
+        function setBengaliDate() {
+            const dateElem = document.getElementById('current-date');
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateStr = now.toLocaleDateString('bn-BD', options);
+            dateElem.innerHTML = `<i class="fa-solid fa-calendar-day text-accent mr-1"></i> আজ: ${dateStr}`;
+        }
+
+        // Render Teachers Cards
+        function renderTeachers(teachers) {
+            teachersGrid.innerHTML = '';
+            if (teachers.length === 0) {
+                teachersGrid.innerHTML = `<p class="text-sm text-slate-500 col-span-2 text-center py-4">কোনো শিক্ষক পাওয়া যায়নি।</p>`;
+                return;
+            }
+
+            teachers.forEach(t => {
+                const card = document.createElement('div');
+                card.className = "bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col sm:flex-row items-center p-4 gap-4";
+                
+                const imgSrc = t.image || `https://placehold.co/120x120/166534/FFFFFF?text=${encodeURIComponent(t.name.substring(0, 1))}`;
+                
+                card.innerHTML = `
+                    <img src="${imgSrc}" alt="${t.name}" class="w-20 h-24 object-cover rounded-md border-2 border-brand-700 shadow flex-shrink-0" onerror="this.src='https://placehold.co/120x120/166534/FFFFFF?text=Teacher';">
+                    <div class="text-center sm:text-left text-xs text-slate-600 space-y-1 w-full">
+                        <h4 class="font-bold text-slate-800 text-sm border-b pb-1 mb-1">${t.name}</h4>
+                        <p><span class="font-semibold text-brand-800">পদবী:</span> ${t.title}</p>
+                        <p><span class="font-semibold text-brand-800">ইনডেক্স:</span> ${t.index}</p>
+                        <p><span class="font-semibold text-brand-800">মোবাইল:</span> <a href="tel:${t.phone}" class="hover:underline text-brand-900 font-medium">${t.phone}</a></p>
+                    </div>
+                `;
+                teachersGrid.appendChild(card);
+            });
+        }
+
+        // Render Notices
+        function renderNotices() {
+            noticeList.innerHTML = '';
+            noticesData.forEach(n => {
+                const li = document.createElement('li');
+                li.className = "py-3 flex items-start gap-3 hover:bg-slate-50 px-2 rounded-lg transition cursor-pointer";
+                li.innerHTML = `
+                    <i class="fa-solid fa-file-lines text-brand-700 text-lg mt-1"></i>
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-slate-800 text-sm hover:text-brand-800">${n.title}</h4>
+                        <span class="text-xs text-slate-400 block mt-0.5"><i class="fa-regular fa-clock mr-1"></i>${n.date}</span>
+                    </div>
+                    <button class="text-xs bg-emerald-100 hover:bg-emerald-200 text-brand-800 font-medium px-2.5 py-1 rounded transition whitespace-nowrap">দেখুন</button>
+                `;
+                li.addEventListener('click', () => openNoticeModal(n));
+                noticeList.appendChild(li);
+            });
+        }
+
+        // Open Notice Modal
+        function openNoticeModal(notice) {
+            modalTitle.innerText = notice.title;
+            modalBody.innerHTML = `
+                <p class="text-xs text-brand-700 font-semibold mb-2"><i class="fa-regular fa-clock mr-1"></i>প্রকাশের তারিখ: ${notice.date}</p>
+                <div class="border-t pt-3 border-slate-100">
+                    <p class="leading-relaxed text-slate-600">${notice.content}</p>
+                </div>
+            `;
+            noticeModal.classList.remove('hidden');
+        }
+
+        // Close Modal
+        function closeModal() {
+            noticeModal.classList.add('hidden');
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuArrow = document.getElementById('menu-arrow');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuArrow.classList.toggle('rotate-180');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuArrow.classList.remove('rotate-180');
+            });
+        });
+
+        // Search Filter for Teachers
+        teacherSearch.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = teachersData.filter(t => 
+                t.name.toLowerCase().includes(query) || 
+                t.title.toLowerCase().includes(query) ||
+                t.index.includes(query)
+            );
+            renderTeachers(filtered);
+        });
+
+        // Modal Listeners
+        closeModalBtn.addEventListener('click', closeModal);
+        modalCloseAction.addEventListener('click', closeModal);
+        noticeModal.addEventListener('click', (e) => {
+            if (e.target === noticeModal) closeModal();
+        });
+
+        // Initialization
+        window.addEventListener('DOMContentLoaded', () => {
+            setBengaliDate();
+            renderTeachers(teachersData);
+            renderNotices();
+        });
+    </script>
 </body>
 </html>
